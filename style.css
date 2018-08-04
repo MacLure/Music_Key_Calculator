@@ -1,0 +1,66 @@
+p {
+    line-height: 50%;
+}
+
+span {
+    color: red;
+}
+
+/* KEYBOARD */
+
+
+.whiteKeys {
+    position: relative;
+    display: inline-block;
+    padding: 0px;
+    margin: 0px;
+    border: none;
+    outline: none;
+    width: 20%;
+    height: 100%;
+    user-select: none;
+}
+
+.blackKeys {
+    position: relative;
+    display: inline-block;
+    padding: 0px;
+    margin: 0px;
+    border: none;
+    outline: none;
+    width: 20%;
+    height: 100%;
+    user-select: none;
+}
+
+
+.whiteKey {
+    width: 32.8571%;
+    user-select: none;
+    outline: none;
+    height: 100%;
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    border-radius: 0px 0px 4px 4px;
+    cursor: pointer;
+    transform: none;
+}
+
+.blackKey {
+    width: 20%;
+    user-select: none;
+    outline: none;
+    height: 66.6667%;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+    border-radius: 0px 0px 3px 3px;
+    right: 20%;
+    transform: none;
+}
+
