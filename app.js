@@ -34,60 +34,58 @@ function sharpen(degree) {
     // To be used as a callback function.  Take a degree and either remove ♭ or add ♯ (or ♮)
 }
 
-function changeToMinorKey(degree) {
-    // Take a degree and update display from major to minor key
-}
-
-function changeToMajorKey(degree) {
-    // Take a degree and update display from minor to major key
-}
-
 function updateKey() {
 
     selectedKey = keySelector.options[keySelector.selectedIndex].value;
     selectedSharpFlat = sharpFlatSelector.options[sharpFlatSelector.selectedIndex].value;
     selectedTonality = majorMinorSelector.options[majorMinorSelector.selectedIndex].value;
-
-
-
-
-
+    
     if (selectedKey === 'C_major') {
-        document.getElementsByClassName("degree1")[0].innerHTML = keyCMajor.degree1;
-        document.getElementsByClassName("degree2")[0].innerHTML = keyCMajor.degree2;
-        document.getElementsByClassName("degree3")[0].innerHTML = keyCMajor.degree3;
-        document.getElementsByClassName("degree4")[0].innerHTML = keyCMajor.degree4;
-        document.getElementsByClassName("degree5")[0].innerHTML = keyCMajor.degree5;
-        document.getElementsByClassName("degree6")[0].innerHTML = keyCMajor.degree6;
-        document.getElementsByClassName("degree7")[0].innerHTML = keyCMajor.degree7;
-        document.getElementsByClassName("degree1")[1].innerHTML = keyCMajor.degree1 + " major";
-        document.getElementsByClassName("degree2")[1].innerHTML = keyCMajor.degree2 + " minor";
-        document.getElementsByClassName("degree3")[1].innerHTML = keyCMajor.degree3 + " minor";
-        document.getElementsByClassName("degree4")[1].innerHTML = keyCMajor.degree4 + " major";
-        document.getElementsByClassName("degree5")[1].innerHTML = keyCMajor.degree5 + " major";
-        document.getElementsByClassName("degree6")[1].innerHTML = keyCMajor.degree6 + " minor";
-        document.getElementsByClassName("degree7")[1].innerHTML = keyCMajor.degree7 + " diminished";
-        document.getElementsByClassName("relativeKey")[0].innerHTML = keyCMajor.degree6 + " minor";
-        document.getElementsByClassName("parallelKey")[0].innerHTML = keyCMajor.degree1 + " minor";
-        document.getElementsByClassName("subdominantKey")[0].innerHTML = keyCMajor.degree4 + " major";
-        document.getElementsByClassName("dominantKey")[0].innerHTML = keyCMajor.degree5 + " major";
-        document.getElementsByClassName("mediantKey")[0].innerHTML = keyCMajor.degree3 + " minor";
+
+        for (i = 0 ; i < keyC.degrees.length ; i++) {
+            document.getElementsByClassName("keySignature")[i].innerHTML = keyC.degrees[i];
+            if (selectedTonality === 'major') {
+                document.getElementsByClassName("diatonicChords")[i].innerHTML = keyC.degrees[i] + " " + majorTonality[i];
+            }
+            // DOESN'T DISPLAY CORRECT ROOTS - ROOTS SHOULD BE THAT OF RELATIVE MAJOR, EG. Eb MAJOR FOR C
+
+            // if (selectedTonality === 'minor') {
+            //     document.getElementsByClassName("diatonicChords")[i].innerHTML = keyC.degrees[i] + " " + naturalMinorTonality[i];
+            // }
+        }
+
+        // DOESN'T DISPLAY CORRECT ROOTS - DOESN'T HANDLE SHARPS OR FLATS
+
+        // let fiveOfX = 5;
+        // for (j = 0 ; j <= 4 ; j++) {
+        //     document.getElementsByClassName("secondaryDominants")[j].innerHTML = keyC.degrees[fiveOfX] + " major";
+        //     fiveOfX ++;
+        //     if (fiveOfX > 6) {
+        //         fiveOfX = 0;
+        //     }
+        // }
+
+        // let sevenOfX = 6;
+        // for (j = 5 ; j <= 9 ; j++) {
+        //     document.getElementsByClassName("secondaryDominants")[j].innerHTML = keyC.degrees[sevenOfX] + " diminished";
+        //     sevenOfX ++;
+        //     if (sevenOfX > 6) {
+        //         sevenOfX = 0;
+        //     }
+        // }
+
+        document.getElementsByClassName("relativeKey")[0].innerHTML = keyC.degrees[5] + " minor";
+        document.getElementsByClassName("parallelKey")[0].innerHTML = keyC.degrees[0] + " minor";
+        document.getElementsByClassName("subdominantKey")[0].innerHTML = keyC.degrees[3] + " major";
+        document.getElementsByClassName("dominantKey")[0].innerHTML = keyC.degrees[4] + " major";
+        document.getElementsByClassName("mediantKey")[0].innerHTML = keyC.degrees[2] + " minor";
     }
     if (selectedKey === 'D_major') {
-        document.getElementsByClassName("degree1")[0].innerHTML = keyDMajor.degree1;
-        document.getElementsByClassName("degree2")[0].innerHTML = keyDMajor.degree2;
-        document.getElementsByClassName("degree3")[0].innerHTML = keyDMajor.degree3;
-        document.getElementsByClassName("degree4")[0].innerHTML = keyDMajor.degree4;
-        document.getElementsByClassName("degree5")[0].innerHTML = keyDMajor.degree5;
-        document.getElementsByClassName("degree6")[0].innerHTML = keyDMajor.degree6;
-        document.getElementsByClassName("degree7")[0].innerHTML = keyDMajor.degree7;
-        document.getElementsByClassName("degree1")[1].innerHTML = keyDMajor.degree1 + " major";
-        document.getElementsByClassName("degree2")[1].innerHTML = keyDMajor.degree2 + " minor";
-        document.getElementsByClassName("degree3")[1].innerHTML = keyDMajor.degree3 + " minor";
-        document.getElementsByClassName("degree4")[1].innerHTML = keyDMajor.degree4 + " major";
-        document.getElementsByClassName("degree5")[1].innerHTML = keyDMajor.degree5 + " major";
-        document.getElementsByClassName("degree6")[1].innerHTML = keyDMajor.degree6 + " minor";
-        document.getElementsByClassName("degree7")[1].innerHTML = keyDMajor.degree7 + " diminished";  
+        
+        for (i = 0 ; i < keyDMajor.degrees.length ; i++) {
+            document.getElementsByClassName("keySignature")[i].innerHTML = keyDMajor.degrees[i];
+            document.getElementsByClassName("diatonicChords")[i].innerHTML = keyDMajor.degrees[i] + " " + majorTonality[i];
+        }
         document.getElementsByClassName("relativeKey")[0].innerHTML = keyDMajor.degree6 + " minor";
         document.getElementsByClassName("parallelKey")[0].innerHTML = keyDMajor.degree1 + " minor";
         document.getElementsByClassName("subdominantKey")[0].innerHTML = keyDMajor.degree4 + " major";
@@ -95,20 +93,10 @@ function updateKey() {
         document.getElementsByClassName("mediantKey")[0].innerHTML = keyDMajor.degree3 + " minor";
     }
     if (selectedKey === 'E_major') {
-        document.getElementsByClassName("degree1")[0].innerHTML = keyEMajor.degree1;
-        document.getElementsByClassName("degree2")[0].innerHTML = keyEMajor.degree2;
-        document.getElementsByClassName("degree3")[0].innerHTML = keyEMajor.degree3;
-        document.getElementsByClassName("degree4")[0].innerHTML = keyEMajor.degree4;
-        document.getElementsByClassName("degree5")[0].innerHTML = keyEMajor.degree5;
-        document.getElementsByClassName("degree6")[0].innerHTML = keyEMajor.degree6;
-        document.getElementsByClassName("degree7")[0].innerHTML = keyEMajor.degree7;
-        document.getElementsByClassName("degree1")[1].innerHTML = keyEMajor.degree1 + " major";
-        document.getElementsByClassName("degree2")[1].innerHTML = keyEMajor.degree2 + " minor";
-        document.getElementsByClassName("degree3")[1].innerHTML = keyEMajor.degree3 + " minor";
-        document.getElementsByClassName("degree4")[1].innerHTML = keyEMajor.degree4 + " major";
-        document.getElementsByClassName("degree5")[1].innerHTML = keyEMajor.degree5 + " major";
-        document.getElementsByClassName("degree6")[1].innerHTML = keyEMajor.degree6 + " minor";
-        document.getElementsByClassName("degree7")[1].innerHTML = keyEMajor.degree7 + " diminished";
+        for (i = 0 ; i < keyEMajor.degrees.length ; i++) {
+            document.getElementsByClassName("keySignature")[i].innerHTML = keyEMajor.degrees[i];
+            document.getElementsByClassName("diatonicChords")[i].innerHTML = keyEMajor.degrees[i] + " " + majorTonality[i];
+        }
         document.getElementsByClassName("relativeKey")[0].innerHTML = keyEMajor.degree6 + " minor";
         document.getElementsByClassName("parallelKey")[0].innerHTML = keyEMajor.degree1 + " minor";
         document.getElementsByClassName("subdominantKey")[0].innerHTML = keyEMajor.degree4 + " major";
@@ -116,20 +104,10 @@ function updateKey() {
         document.getElementsByClassName("mediantKey")[0].innerHTML = keyEMajor.degree3 + " minor";
     }
     if (selectedKey === 'F_major') {
-        document.getElementsByClassName("degree1")[0].innerHTML = keyFMajor.degree1;
-        document.getElementsByClassName("degree2")[0].innerHTML = keyFMajor.degree2;
-        document.getElementsByClassName("degree3")[0].innerHTML = keyFMajor.degree3;
-        document.getElementsByClassName("degree4")[0].innerHTML = keyFMajor.degree4;
-        document.getElementsByClassName("degree5")[0].innerHTML = keyFMajor.degree5;
-        document.getElementsByClassName("degree6")[0].innerHTML = keyFMajor.degree6;
-        document.getElementsByClassName("degree7")[0].innerHTML = keyFMajor.degree7;
-        document.getElementsByClassName("degree1")[1].innerHTML = keyFMajor.degree1 + " major";
-        document.getElementsByClassName("degree2")[1].innerHTML = keyFMajor.degree2 + " minor";
-        document.getElementsByClassName("degree3")[1].innerHTML = keyFMajor.degree3 + " minor";
-        document.getElementsByClassName("degree4")[1].innerHTML = keyFMajor.degree4 + " major";
-        document.getElementsByClassName("degree5")[1].innerHTML = keyFMajor.degree5 + " major";
-        document.getElementsByClassName("degree6")[1].innerHTML = keyFMajor.degree6 + " minor";
-        document.getElementsByClassName("degree7")[1].innerHTML = keyFMajor.degree7 + " diminished";
+        for (i = 0 ; i < keyFMajor.degrees.length ; i++) {
+            document.getElementsByClassName("keySignature")[i].innerHTML = keyFMajor.degrees[i];
+            document.getElementsByClassName("diatonicChords")[i].innerHTML = keyFMajor.degrees[i] + " " + majorTonality[i];
+        }
         document.getElementsByClassName("relativeKey")[0].innerHTML = keyFMajor.degree6 + " minor";
         document.getElementsByClassName("parallelKey")[0].innerHTML = keyFMajor.degree1 + " minor";
         document.getElementsByClassName("subdominantKey")[0].innerHTML = keyFMajor.degree4 + " major";
@@ -137,20 +115,10 @@ function updateKey() {
         document.getElementsByClassName("mediantKey")[0].innerHTML = keyFMajor.degree3 + " minor";
     }
     if (selectedKey === 'G_major') {
-        document.getElementsByClassName("degree1")[0].innerHTML = keyGMajor.degree1;
-        document.getElementsByClassName("degree2")[0].innerHTML = keyGMajor.degree2;
-        document.getElementsByClassName("degree3")[0].innerHTML = keyGMajor.degree3;
-        document.getElementsByClassName("degree4")[0].innerHTML = keyGMajor.degree4;
-        document.getElementsByClassName("degree5")[0].innerHTML = keyGMajor.degree5;
-        document.getElementsByClassName("degree6")[0].innerHTML = keyGMajor.degree6;
-        document.getElementsByClassName("degree7")[0].innerHTML = keyGMajor.degree7;
-        document.getElementsByClassName("degree1")[1].innerHTML = keyGMajor.degree1 + " major";
-        document.getElementsByClassName("degree2")[1].innerHTML = keyGMajor.degree2 + " minor";
-        document.getElementsByClassName("degree3")[1].innerHTML = keyGMajor.degree3 + " minor";
-        document.getElementsByClassName("degree4")[1].innerHTML = keyGMajor.degree4 + " major";
-        document.getElementsByClassName("degree5")[1].innerHTML = keyGMajor.degree5 + " major";
-        document.getElementsByClassName("degree6")[1].innerHTML = keyGMajor.degree6 + " minor";
-        document.getElementsByClassName("degree7")[1].innerHTML = keyGMajor.degree7 + " diminished";
+        for (i = 0 ; i < keyGMajor.degrees.length ; i++) {
+            document.getElementsByClassName("keySignature")[i].innerHTML = keyGMajor.degrees[i];
+            document.getElementsByClassName("diatonicChords")[i].innerHTML = keyGMajor.degrees[i] + " " + majorTonality[i];
+        }
         document.getElementsByClassName("relativeKey")[0].innerHTML = keyGMajor.degree6 + " minor";
         document.getElementsByClassName("parallelKey")[0].innerHTML = keyGMajor.degree1 + " minor";
         document.getElementsByClassName("subdominantKey")[0].innerHTML = keyGMajor.degree4 + " major";
@@ -158,20 +126,10 @@ function updateKey() {
         document.getElementsByClassName("mediantKey")[0].innerHTML = keyGMajor.degree3 + " minor";
     }
     if (selectedKey === 'A_major') {
-        document.getElementsByClassName("degree1")[0].innerHTML = keyAMajor.degree1;
-        document.getElementsByClassName("degree2")[0].innerHTML = keyAMajor.degree2;
-        document.getElementsByClassName("degree3")[0].innerHTML = keyAMajor.degree3;
-        document.getElementsByClassName("degree4")[0].innerHTML = keyAMajor.degree4;
-        document.getElementsByClassName("degree5")[0].innerHTML = keyAMajor.degree5;
-        document.getElementsByClassName("degree6")[0].innerHTML = keyAMajor.degree6;
-        document.getElementsByClassName("degree7")[0].innerHTML = keyAMajor.degree7;
-        document.getElementsByClassName("degree1")[1].innerHTML = keyAMajor.degree1 + " major";
-        document.getElementsByClassName("degree2")[1].innerHTML = keyAMajor.degree2 + " minor";
-        document.getElementsByClassName("degree3")[1].innerHTML = keyAMajor.degree3 + " minor";
-        document.getElementsByClassName("degree4")[1].innerHTML = keyAMajor.degree4 + " major";
-        document.getElementsByClassName("degree5")[1].innerHTML = keyAMajor.degree5 + " major";
-        document.getElementsByClassName("degree6")[1].innerHTML = keyAMajor.degree6 + " minor";
-        document.getElementsByClassName("degree7")[1].innerHTML = keyAMajor.degree7 + " diminished"; 
+        for (i = 0 ; i < keyAMajor.degrees.length ; i++) {
+            document.getElementsByClassName("keySignature")[i].innerHTML = keyAMajor.degrees[i];
+            document.getElementsByClassName("diatonicChords")[i].innerHTML = keyAMajor.degrees[i] + " " + majorTonality[i];
+        }
         document.getElementsByClassName("relativeKey")[0].innerHTML = keyAMajor.degree6 + " minor";
         document.getElementsByClassName("parallelKey")[0].innerHTML = keyAMajor.degree1 + " minor";
         document.getElementsByClassName("subdominantKey")[0].innerHTML = keyAMajor.degree4 + " major";
@@ -179,20 +137,10 @@ function updateKey() {
         document.getElementsByClassName("mediantKey")[0].innerHTML = keyAMajor.degree3 + " minor";
     }
     if (selectedKey === 'B_major') {
-        document.getElementsByClassName("degree1")[0].innerHTML = keyBMajor.degree1;
-        document.getElementsByClassName("degree2")[0].innerHTML = keyBMajor.degree2;
-        document.getElementsByClassName("degree3")[0].innerHTML = keyBMajor.degree3;
-        document.getElementsByClassName("degree4")[0].innerHTML = keyBMajor.degree4;
-        document.getElementsByClassName("degree5")[0].innerHTML = keyBMajor.degree5;
-        document.getElementsByClassName("degree6")[0].innerHTML = keyBMajor.degree6;
-        document.getElementsByClassName("degree7")[0].innerHTML = keyBMajor.degree7;
-        document.getElementsByClassName("degree1")[1].innerHTML = keyBMajor.degree1 + " major";
-        document.getElementsByClassName("degree2")[1].innerHTML = keyBMajor.degree2 + " minor";
-        document.getElementsByClassName("degree3")[1].innerHTML = keyBMajor.degree3 + " minor";
-        document.getElementsByClassName("degree4")[1].innerHTML = keyBMajor.degree4 + " major";
-        document.getElementsByClassName("degree5")[1].innerHTML = keyBMajor.degree5 + " major";
-        document.getElementsByClassName("degree6")[1].innerHTML = keyBMajor.degree6 + " minor";
-        document.getElementsByClassName("degree7")[1].innerHTML = keyBMajor.degree7 + " diminished";
+        for (i = 0 ; i < keyBMajor.degrees.length ; i++) {
+            document.getElementsByClassName("keySignature")[i].innerHTML = keyBMajor.degrees[i];
+            document.getElementsByClassName("diatonicChords")[i].innerHTML = keyBMajor.degrees[i] + " " + majorTonality[i];
+        }
         document.getElementsByClassName("relativeKey")[0].innerHTML = keyBMajor.degree6 + " minor";
         document.getElementsByClassName("parallelKey")[0].innerHTML = keyBMajor.degree1 + " minor";
         document.getElementsByClassName("subdominantKey")[0].innerHTML = keyBMajor.degree4 + " major";
@@ -202,84 +150,43 @@ function updateKey() {
 }
 
 function initializeToC() {
-    document.getElementsByClassName("degree1").innerHTML = keyCMajor.degree1;
-    document.getElementsByClassName("degree2").innerHTML = keyCMajor.degree2;
-    document.getElementsByClassName("degree3").innerHTML = keyCMajor.degree3;
-    document.getElementsByClassName("degree4").innerHTML = keyCMajor.degree4;
-    document.getElementsByClassName("degree5").innerHTML = keyCMajor.degree5;
-    document.getElementsByClassName("degree6").innerHTML = keyCMajor.degree6;
-    document.getElementsByClassName("degree7").innerHTML = keyCMajor.degree7;
+    for (i = 0 ; i < keyC.degrees.length ; i++) {
+        document.getElementsByClassName("keySignature")[i].innerHTML = keyC.degrees[i];
+        if (selectedTonality === 'major') {
+            document.getElementsByClassName("diatonicChords")[i].innerHTML = keyC.degrees[i] + " " + majorTonality[i];
+        }
+        if (selectedTonality === 'minor') {
+            document.getElementsByClassName("diatonicChords")[i].innerHTML = keyC.degrees[i] + " " + naturalMinorTonality[i];
+        }
+    }
 }
 
 // DATABASE
 
-const keyCMajor = {
-    degree1: "C",
-    degree2: "D",
-    degree3: "E",
-    degree4: "F",
-    degree5: "G",
-    degree6: "A",
-    degree7: "B",
-}
+const majorTonality = ["major", "minor", "minor", "major", "major", "minor", "diminished"];
+const naturalMinorTonality = ["minor", "diminished", "major", "minor", "minor", "major", "major"];
 
+
+const keyC = {
+    degrees: ["C", "D", "E", "F", "G", "A", "B"]
+}
 const keyDMajor = {
-    degree1: "D",
-    degree2: "E",
-    degree3: "F♯",
-    degree4: "G",
-    degree5: "A",
-    degree6: "B",
-    degree7: "C♯",
+    degrees: ["D", "E", "F♯", "G", "A", "B", "C♯"]
 }
-
 const keyEMajor = {
-    degree1: "E",
-    degree2: "F♯",
-    degree3: "G♯",
-    degree4: "A",
-    degree5: "B",
-    degree6: "C♯",
-    degree7: "D♯",
+    degrees: ["E", "F♯", "G♯", "A", "B", "C♯", "D♯"]
 }
-
 const keyFMajor = {
-    degree1: "F",
-    degree2: "G",
-    degree3: "A",
-    degree4: "B♭",
-    degree5: "C",
-    degree6: "D",
-    degree7: "E",
+    degrees: ["F", "G", "A", "B♭", "C", "D", "E"]
 }
 const keyGMajor = {
-    degree1: "G",
-    degree2: "A",
-    degree3: "B",
-    degree4: "C",
-    degree5: "D",
-    degree6: "E",
-    degree7: "F♯",
+    degrees: ["F♯", "G", "A", "B", "C", "D", "E"]
 }
-
 const keyAMajor = {
-    degree1: "A",
-    degree2: "B",
-    degree3: "C♯",
-    degree4: "D",
-    degree5: "E",
-    degree6: "F♯",
-    degree7: "G♯",
+    degrees: ["A", "B", "C♯", "D", "E", "F♯", "G♯"]
 }
-
 const keyBMajor = {
-    degree1: "B",
-    degree2: "C♯",
-    degree3: "D♯",
-    degree4: "E",
-    degree5: "F♯",
-    degree6: "G♯",
-    degree7: "A♯",
+    degrees: ["B", "C♯", "D♯", "E", "F♯", "G♯", "A♯"]
 }
 
 // SET APP'S STARTING KEY TO C MAJOR
